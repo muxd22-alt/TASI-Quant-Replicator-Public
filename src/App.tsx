@@ -72,10 +72,10 @@ export default function App() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
           <div>
             <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400 pb-2">
-              SAQL Quant Replicator
+              TASI Quant Model
             </h1>
             <p className="text-slate-400 text-lg sm:max-w-xl">
-              Daily automated quantitative factor model predicting top TASI alternatives matching SAQL ETF active logic.
+              Daily automated quantitative factor model predicting top TASI alternatives based on active logic.
             </p>
           </div>
           <div className="glass-panel px-4 py-3 mt-6 md:mt-0 flex items-center gap-3">
