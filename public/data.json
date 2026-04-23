@@ -1,0 +1,112 @@
+{
+  "updatedAt": "2026-04-23T10:37:52.165112Z",
+  "top5": [
+    {
+      "Ticker": "2250.SR",
+      "Name": "Saudi Industrial Investment Gro",
+      "MarketCap": 8830899200.0,
+      "PE": 17.343283,
+      "PB": 1.0104936,
+      "DivYield": 7701.000000000001,
+      "ROE": -1.1280000000000001,
+      "PE_Score": 0.2079016594870888,
+      "PB_Score": 0.37795354734950737,
+      "Div_Score": 8.85937901662359,
+      "ROE_Score": -0.1861845930691385,
+      "Total_Score": 9.259049630391049,
+      "Is_Top_Holding": false
+    },
+    {
+      "Ticker": "4321.SR",
+      "Name": "Arabian Centres Co.",
+      "MarketCap": 8364336640.0,
+      "PE": 6.5955057,
+      "PB": 0.5391752,
+      "DivYield": 856.0,
+      "ROE": 8.3979994,
+      "PE_Score": 0.5719034647164666,
+      "PB_Score": 0.4796721180352799,
+      "Div_Score": 0.5998030213468024,
+      "ROE_Score": 0.14395160160158738,
+      "Total_Score": 1.7953302057001364,
+      "Is_Top_Holding": false
+    },
+    {
+      "Ticker": "2110.SR",
+      "Name": "Saudi Cable Co.",
+      "MarketCap": 1009610688.0,
+      "PE": 4.942829,
+      "PB": -4.710021,
+      "DivYield": 0.0,
+      "ROE": 0.0,
+      "PE_Score": 0.6278757169755947,
+      "PB_Score": 1.6125384239405622,
+      "Div_Score": -0.4330964749215584,
+      "ROE_Score": -0.147092250948208,
+      "Total_Score": 1.6602254150463904,
+      "Is_Top_Holding": false
+    },
+    {
+      "Ticker": "3030.SR",
+      "Name": "Saudi Cement Co.",
+      "MarketCap": 5238720512.0,
+      "PE": 14.386555,
+      "PB": 2.3599148,
+      "DivYield": 961.0,
+      "ROE": 16.307,
+      "PE_Score": 0.3080390459932502,
+      "PB_Score": 0.08672537608125241,
+      "Div_Score": 0.7265021418002813,
+      "ROE_Score": 0.41804854955357734,
+      "Total_Score": 1.5393151134283611,
+      "Is_Top_Holding": false
+    },
+    {
+      "Ticker": "2050.SR",
+      "Name": "Savola Group",
+      "MarketCap": 7951447040.0,
+      "PE": 9.068027,
+      "PB": 1.4370418,
+      "DivYield": 628.0,
+      "ROE": 15.755999000000001,
+      "PE_Score": 0.48816501428652626,
+      "PB_Score": 0.285897151434158,
+      "Div_Score": 0.32468493121924835,
+      "ROE_Score": 0.39895287614845787,
+      "Total_Score": 1.4976999730883906,
+      "Is_Top_Holding": false
+    }
+  ],
+  "bottom2": [
+    {
+      "Ticker": "4180.SR",
+      "Name": "Fitaihi Holding Group",
+      "MarketCap": 742500032.0,
+      "PE": 270.0,
+      "PB": 1.556196,
+      "DivYield": 94.0,
+      "ROE": 0.848,
+      "PE_Score": -8.348983966653307,
+      "PB_Score": 0.2601816374308713,
+      "Div_Score": -0.319670595658444,
+      "ROE_Score": -0.11770368169417514,
+      "Total_Score": -8.526176606575055,
+      "Is_Top_Holding": false
+    },
+    {
+      "Ticker": "4270.SR",
+      "Name": "Saudi Printing and Packaging Co",
+      "MarketCap": 513831680.0,
+      "PE": 17.343283,
+      "PB": 38.439026,
+      "DivYield": 0.0,
+      "ROE": -182.054,
+      "PE_Score": 0.2079016594870888,
+      "PB_Score": -7.699763805917679,
+      "Div_Score": -0.4330964749215584,
+      "ROE_Score": -6.456416056341723,
+      "Total_Score": -14.381374677693872,
+      "Is_Top_Holding": false
+    }
+  ]
+}
