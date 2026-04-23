@@ -6,9 +6,9 @@ import os
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-CACHE_FILE = "public/cache_db.json"
-DATA_FILE = "public/data.json"
-PORTFOLIO_FILE = "public/portfolio.json"
+CACHE_FILE = "docs/cache_db.json"
+DATA_FILE = "docs/data.json"
+PORTFOLIO_FILE = "docs/portfolio.json"
 BATCH_SIZE = 5
 
 universe_tickers = [
