@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TASI Quant Model</title>
+  <meta name="description" content="Daily automated quantitative factor model for TASI market analysis." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --emerald: #10B981;
+      --emerald-dim: rgba(16, 185, 129, 0.15);
+      --red: #EF4444;
+      --red-dim: rgba(239, 68, 68, 0.12);
+      --bg: #05080F;
+      --surface: rgba(15, 23, 42, 0.6);
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #E2E8F0;
+      --text-dim: #64748B;
+      --mono: 'JetBrains Mono', monospace;
+    }
+
+    body {
+      font-family: 'Outfit', system-ui, sans-serif;
+      background: var(--bg);
+      background-image:
+        radial-gradient(circle at 15% 50%, rgba(16,185,129,0.07) 0%, transparent 50%),
+        radial-gradient(circle at 85% 20%, rgba(6,182,212,0.06) 0%, transparent 50%);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.25rem; }
+
+    /* Glass panel */
+    .glass {
+      background: var(--surface);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.5rem;
+    }
+
+    /* Header */
+    header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 2.5rem; }
+    header h1 {
+      font-size: 2.5rem; font-weight: 800; letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #10B981, #06B6D4);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    header p { color: var(--text-dim); font-size: 1rem; max-width: 450px; margin-top: 0.25rem; }
+    .timestamp { font-family: var(--mono); font-size: 0.8rem; color: var(--text-dim); padding: 0.5rem 1rem; border-radius: 0.5rem; border: 1px solid var(--border); background: rgba(15,23,42,0.5); white-space: nowrap; }
+
+    /* Portfolio banner */
+    .portfolio-banner {
+      display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;
+      margin-bottom: 2.5rem; border-color: rgba(16,185,129,0.2);
+      box-shadow: 0 0 30px rgba(16,185,129,0.08);
+    }
+    .portfolio-banner .balance { font-family: var(--mono); font-size: 2rem; font-weight: 700; color: #6EE7B7; }
+    .portfolio-banner .label { font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
+    .portfolio-banner .return { font-family: var(--mono); font-size: 1.15rem; font-weight: 600; text-align: right; }
+    .portfolio-banner .return.pos { color: var(--emerald); }
+    .portfolio-banner .return.neg { color: var(--red); }
+
+    /* Section */
+    .section-title { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; font-size: 1.5rem; font-weight: 600; }
+    .section-title .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot-green { background: var(--emerald); box-shadow: 0 0 8px var(--emerald); }
+    .dot-red { background: var(--red); box-shadow: 0 0 8px var(--red); }
+
+    /* Card grid */
+    .grid { display: grid; gap: 1rem; }
+    .grid-2 { grid-template-columns: repeat(auto-fill, minmax(min(100%, 480px), 1fr)); }
+
+    /* Stock card */
+    .card {
+      position: relative; overflow: hidden; transition: box-shadow 0.4s;
+    }
+    .card:hover { box-shadow: 0 0 24px rgba(16,185,129,0.15); }
+    .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
+    .card-name { font-size: 1.15rem; font-weight: 700; }
+    .card-ticker { font-family: var(--mono); font-size: 0.8rem; margin-top: 0.2rem; }
+    .card-ticker.green { color: var(--emerald); }
+    .card-ticker.red { color: var(--red); }
+    .badge {
+      font-family: var(--mono); font-size: 0.75rem; padding: 0.3rem 0.7rem;
+      border-radius: 999px; white-space: nowrap; font-weight: 500;
+    }
+    .badge-green { background: var(--emerald-dim); color: #6EE7B7; border: 1px solid rgba(16,185,129,0.25); }
+    .badge-red { background: var(--red-dim); color: #FCA5A5; border: 1px solid rgba(239,68,68,0.25); }
+
+    /* Metrics row */
+    .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin-top: 0.75rem; }
+    .metric {
+      background: rgba(30,41,59,0.5); border: 1px solid rgba(51,65,85,0.5);
+      border-radius: 0.5rem; padding: 0.6rem 0.75rem;
+    }
+    .metric-label { font-size: 0.65rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+    .metric-value { font-size: 1rem; font-weight: 600; margin-top: 0.15rem; font-family: var(--mono); }
+
+    /* Loading / Error */
+    .center-msg { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 60vh; text-align: center; }
+    .spinner { width: 40px; height: 40px; border: 3px solid var(--border); border-top-color: var(--emerald); border-radius: 50%; animation: spin 0.8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(51,65,85,0.3); display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-dim); }
+
+    @media (max-width: 640px) {
+      header h1 { font-size: 1.75rem; }
+      .portfolio-banner .balance { font-size: 1.5rem; }
+      .portfolio-banner { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+      .portfolio-banner .return { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="app">
+    <div class="center-msg" id="loading">
+      <div class="spinner"></div>
+      <p style="margin-top:1rem; color:var(--text-dim)">Loading model data…</p>
+    </div>
+  </div>
+
+  <script>
+    const app = document.getElementById('app');
+    const loading = document.getElementById('loading');
+
+    fetch('data.json')
+      .then(r => { if (!r.ok) throw new Error('No data'); return r.json(); })
+      .then(render)
+      .catch(() => {
+        loading.innerHTML = `
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          <h2 style="margin-top:1rem;font-size:1.5rem;font-weight:700">Data Unavailable</h2>
+          <p style="color:var(--text-dim);margin-top:0.5rem">Model hasn't run yet. Check back after the next scheduled run.</p>`;
+      });
+
+    function render(data) {
+      const ptf = data.portfolio || { balance: 10000, history: [] };
+      const ret = ptf.balance - 10000;
+      const retPct = (ret / 10000 * 100).toFixed(2);
+      const retClass = ret >= 0 ? 'pos' : 'neg';
+      const retSign = ret >= 0 ? '+' : '';
+
+      const ts = new Date(data.updatedAt).toLocaleString('en-US', {
+        timeZone: 'Asia/Riyadh', month: 'short', day: 'numeric',
+        hour: '2-digit', minute: '2-digit', timeZoneName: 'short'
+      });
+
+      app.innerHTML = `
+        <header>
+          <div>
+            <h1>TASI Quant Model</h1>
+            <p>Automated multi-factor ranking model scanning the top TASI stocks daily.</p>
+          </div>
+          <div class="timestamp">🕐 ${ts}</div>
+        </header>
+
+        <div class="glass portfolio-banner">
+          <div>
+            <div class="label">Model Portfolio (started 10,000 SAR)</div>
+            <div class="balance">${ptf.balance.toFixed(2)} SAR</div>
+          </div>
+          <div>
+            <div class="return ${retClass}">${retSign}${ret.toFixed(2)} SAR (${retSign}${retPct}%)</div>
+            <div class="label" style="text-align:right;margin-top:0.25rem">Total Return</div>
+          </div>
+        </div>
+
+        <section style="margin-bottom:2.5rem">
+          <div class="section-title"><span class="dot dot-green"></span> Confirmed Buys — Top 5</div>
+          <div class="grid grid-2">${(data.top5 || []).map(stockCard('green')).join('')}</div>
+        </section>
+
+        <section>
+          <div class="section-title"><span class="dot dot-red"></span> Least Attractive — Bottom 5</div>
+          <div class="grid grid-2">${(data.bottom5 || []).map(stockCard('red')).join('')}</div>
+        </section>
+
+        <footer>
+          <span>Automated Factor Ranking</span>
+          <span>TASI Quant Model • Open Source</span>
+        </footer>
+      `;
+    }
+
+    function stockCard(color) {
+      return function(s) {
+        const score = (s.Total_Score ?? 0).toFixed(2);
+        const pe = (s.PE ?? 0).toFixed(1);
+        const div = (s.DivYield ?? 0).toFixed(2);
+        const roe = (s.ROE ?? 0).toFixed(1);
+        return `
+          <div class="glass card">
+            <div class="card-header">
+              <div>
+                <div class="card-name">${s.Name || s.Ticker}</div>
+                <div class="card-ticker ${color}">${s.Ticker}</div>
+              </div>
+              <span class="badge badge-${color}">Score: ${score}</span>
+            </div>
+            <div class="metrics">
+              <div class="metric"><div class="metric-label">P/E</div><div class="metric-value">${pe}x</div></div>
+              <div class="metric"><div class="metric-label">Div Yield</div><div class="metric-value">${div}%</div></div>
+              <div class="metric"><div class="metric-label">ROE</div><div class="metric-value">${roe}%</div></div>
+            </div>
+          </div>`;
+      };
+    }
+  </script>
+</body>
+</html>
