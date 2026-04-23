@@ -14,7 +14,7 @@ type StockCandidate = {
 type QuantData = {
   updatedAt: string;
   top5: StockCandidate[];
-  bottom2: StockCandidate[];
+  bottom5: StockCandidate[];
 };
 
 export default function App() {
@@ -141,17 +141,17 @@ export default function App() {
           </div>
         </section>
 
-        {/* Bottom 2 SECTION */}
+        {/* Bottom 5 SECTION */}
         <section className="pt-6">
           <div className="flex items-center gap-3 mb-6">
             <div className="h-10 w-10 rounded-full bg-red-500/10 flex items-center justify-center border border-red-500/30">
               <TrendingDown className="w-5 h-5 text-red-400" />
             </div>
-            <h2 className="text-3xl font-semibold">Least Attractive <span className="text-red-400">(Optional Avoid 2)</span></h2>
+            <h2 className="text-3xl font-semibold">Least Attractive <span className="text-red-400">(Bottom 5)</span></h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {data.bottom2.map((stock, i) => (
+            {data.bottom5.map((stock, i) => (
               <motion.div
                 key={stock.Ticker}
                 initial={{ opacity: 0, y: 20 }}

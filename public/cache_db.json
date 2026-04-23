@@ -1,0 +1,52 @@
+{
+  "4010.SR": {
+    "Ticker": "4010.SR",
+    "Name": "4010.SR",
+    "MarketCap": NaN,
+    "PE": NaN,
+    "PB": NaN,
+    "DivYield": 0,
+    "ROE": 0,
+    "LastUpdated": "2026-04-23T10:46:50.452354"
+  },
+  "8040.SR": {
+    "Ticker": "8040.SR",
+    "Name": "Mutakamela Insurance Co.",
+    "MarketCap": 529447552,
+    "PE": 68.46154,
+    "PB": 0.7313666,
+    "DivYield": 0,
+    "ROE": 1.039,
+    "LastUpdated": "2026-04-23T10:46:50.455774"
+  },
+  "8010.SR": {
+    "Ticker": "8010.SR",
+    "Name": "The Company for Cooperative Ins",
+    "MarketCap": 19788599296,
+    "PE": 17.97279,
+    "PB": 3.6872663,
+    "DivYield": 115.99999999999999,
+    "ROE": 22.431,
+    "LastUpdated": "2026-04-23T10:46:50.460517"
+  },
+  "2050.SR": {
+    "Ticker": "2050.SR",
+    "Name": "Savola Group",
+    "MarketCap": 7957412352,
+    "PE": 9.07483,
+    "PB": 1.4381199,
+    "DivYield": 628.0,
+    "ROE": 15.755999000000001,
+    "LastUpdated": "2026-04-23T10:46:50.503490"
+  },
+  "8210.SR": {
+    "Ticker": "8210.SR",
+    "Name": "Bupa Arabia for Cooperative Ins",
+    "MarketCap": 27599998976,
+    "PE": 25.449516,
+    "PB": 4.8183937,
+    "DivYield": 219.0,
+    "ROE": 20.0,
+    "LastUpdated": "2026-04-23T10:46:50.699129"
+  }
+}

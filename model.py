@@ -6,13 +6,16 @@ import os
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
+CACHE_FILE = "public/cache_db.json"
+DATA_FILE = "public/data.json"
+BATCH_SIZE = 5
+
 top_holding_tickers = {
     '1120.SR': 9.4, '1180.SR': 9.3, '2222.SR': 8.6, '1211.SR': 7.8,
     '1010.SR': 4.7, '1150.SR': 4.2, '2020.SR': 4.1, '1050.SR': 3.3,
     '7020.SR': 3.3, '7010.SR': 3.2
 }
 
-# A broad list of top 100~ TASI companies by market cap/liquidity
 universe_tickers = list(top_holding_tickers.keys()) + [
     '2010.SR', '1140.SR', '2280.SR', '5110.SR', '4002.SR', '4190.SR', '1111.SR', '4280.SR', '4001.SR',
     '7030.SR', '2050.SR', '2060.SR', '2110.SR', '2140.SR', '2220.SR', '2250.SR', '8010.SR', '8012.SR',
@@ -25,8 +28,21 @@ universe_tickers = list(top_holding_tickers.keys()) + [
     '2001.SR', '2030.SR', '2040.SR', '2070.SR', '2080.SR', '2081.SR', '2082.SR', '2083.SR', '2090.SR'
 ]
 
-# Ensure uniqueness
 universe_tickers = list(set(universe_tickers))
+
+def load_cache():
+    if os.path.exists(CACHE_FILE):
+        try:
+            with open(CACHE_FILE, "r") as f:
+                return json.load(f)
+        except:
+            return {}
+    return {}
+
+def save_cache(cache):
+    os.makedirs("public", exist_ok=True)
+    with open(CACHE_FILE, "w") as f:
+        json.dump(cache, f, indent=2)
 
 def fetch_single(ticker):
     stock = yf.Ticker(ticker)
@@ -41,24 +57,58 @@ def fetch_single(ticker):
             'PB': info.get('priceToBook', np.nan),
             'DivYield': (info.get('dividendYield') or 0) * 100,
             'ROE': (info.get('returnOnEquity') or 0) * 100,
+            'LastUpdated': datetime.utcnow().isoformat()
         }
     except Exception:
         return None
 
-def fetch_data(tickers):
-    data = []
-    print(f"Fetching data for {len(tickers)} tickers concurrently...")
-    with ThreadPoolExecutor(max_workers=10) as executor:
-        futures = {executor.submit(fetch_single, t): t for t in tickers}
+def main():
+    cache = load_cache()
+    
+    # Identify which tickers to update (oldest first)
+    # Give a default very old date for tickers not in cache
+    ticker_updates = []
+    for t in universe_tickers:
+        last_up = cache.get(t, {}).get("LastUpdated", "1970-01-01T00:00:00")
+        ticker_updates.append((t, last_up))
+        
+    ticker_updates.sort(key=lambda x: x[1])
+    to_fetch = [x[0] for x in ticker_updates[:BATCH_SIZE]]
+    
+    print(f"Fetching chunks to avoid rate limiting. Fetching: {to_fetch}")
+    
+    with ThreadPoolExecutor(max_workers=BATCH_SIZE) as executor:
+        futures = {executor.submit(fetch_single, t): t for t in to_fetch}
         for future in as_completed(futures):
             res = future.result()
-            if res: data.append(res)
-    return pd.DataFrame(data)
-
-def calculate_scores(df):
-    for col in ['PE', 'PB', 'DivYield', 'ROE']:
-        df[col] = df[col].fillna(df[col].median() if not df[col].isna().all() else 0)
+            if res is not None:
+                cache[res["Ticker"]] = res
+                
+    save_cache(cache)
+    
+    # Calculate scores on the entire current state of cache
+    df_data = list(cache.values())
+    if len(df_data) == 0:
+        print("No valid cached data yet.")
+        return
         
+    df = pd.DataFrame(df_data)
+    
+    # Clean missing important fields
+    df = df.dropna(subset=['MarketCap'])
+    df = df[df['MarketCap'] > 0]
+    
+    if df.empty:
+        return
+
+    # Impute missing ratios
+    for col in ['PE', 'PB', 'DivYield', 'ROE']:
+        if col in df.columns:
+            df[col] = df[col].fillna(df[col].median() if not df[col].isna().all() else 0)
+        else:
+            df[col] = 0
+            
+    # Calculate Component Z-Scores
     df['PE_Score'] = (df['PE'].mean() - df['PE']) / (df['PE'].std() + 1e-9)
     df['PB_Score'] = (df['PB'].mean() - df['PB']) / (df['PB'].std() + 1e-9)
     df['Div_Score'] = (df['DivYield'] - df['DivYield'].mean()) / (df['DivYield'].std() + 1e-9)
@@ -66,48 +116,25 @@ def calculate_scores(df):
     
     df['Total_Score'] = df['PE_Score'] + df['PB_Score'] + df['Div_Score'] + df['ROE_Score']
     df = df.sort_values(by='Total_Score', ascending=False).reset_index(drop=True)
-    return df
-
-def main():
-    df = fetch_data(universe_tickers)
-    df = df.dropna(subset=['MarketCap'])
-    df = df[df['MarketCap'] > 0] # Filter valid ones
     
-    df_scored = calculate_scores(df)
+    df['Is_Top_Holding'] = df['Ticker'].apply(lambda x: x in top_holding_tickers)
     
-    df_scored['Is_Top_Holding'] = df_scored['Ticker'].apply(lambda x: x in top_holding_tickers)
-    
-    candidates = df_scored[~df_scored['Is_Top_Holding']]
+    candidates = df[~df['Is_Top_Holding']]
     
     top_5 = candidates.head(5).to_dict(orient='records')
-    bottom_2 = candidates.tail(2).to_dict(orient='records')
+    bottom_5 = candidates.tail(5).to_dict(orient='records')
     
     output = {
         "updatedAt": datetime.utcnow().isoformat() + "Z",
         "top5": top_5,
-        "bottom2": bottom_2
+        "bottom5": bottom_5
     }
     
-    os.makedirs("public", exist_ok=True)
-    
-    # Check if history matches to avoid false push (though git naturally handles diffs)
-    history_path = "public/data.json"
-    if os.path.exists(history_path):
-        with open(history_path, "r") as f:
-            try:
-                old_data = json.load(f)
-                old_top = [x['Ticker'] for x in old_data.get('top5', [])]
-                new_top = [x['Ticker'] for x in top_5]
-                if old_top == new_top:
-                    print("Top 5 hasn't changed. Just updating timestamp...")
-            except:
-                pass
-
-    with open(history_path, "w") as f:
+    with open(DATA_FILE, "w") as f:
         json.dump(output, f, indent=2)
         
-    df_scored.to_csv("quant_model_results.csv", index=False)
-    print("Done generating model!")
+    df.to_csv("quant_model_results.csv", index=False)
+    print("Done! Model results exported.")
 
 if __name__ == "__main__":
     main()
