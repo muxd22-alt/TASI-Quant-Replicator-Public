@@ -48,5 +48,60 @@
     "DivYield": 219.0,
     "ROE": 20.0,
     "LastUpdated": "2026-04-23T10:46:50.699129"
+  },
+  "1010.SR": {
+    "Ticker": "1010.SR",
+    "Name": "Riyad Bank",
+    "MarketCap": 85722120192,
+    "PE": 8.712551,
+    "PB": 1.3372273,
+    "DivYield": 379.0,
+    "ROE": 14.472,
+    "CurrentPrice": 21.52,
+    "LastUpdated": "2026-04-23T11:08:03.078688"
+  },
+  "4190.SR": {
+    "Ticker": "4190.SR",
+    "Name": "Jarir Marketing Co.",
+    "MarketCap": 18144000000,
+    "PE": 17.37931,
+    "PB": 10.299727,
+    "DivYield": 676.0,
+    "ROE": 59.836,
+    "CurrentPrice": 15.12,
+    "LastUpdated": "2026-04-23T11:08:03.142473"
+  },
+  "4180.SR": {
+    "Ticker": "4180.SR",
+    "Name": "Fitaihi Holding Group",
+    "MarketCap": 745249984,
+    "PE": 271.0,
+    "PB": 1.5619596,
+    "DivYield": 94.0,
+    "ROE": 0.848,
+    "CurrentPrice": 2.71,
+    "LastUpdated": "2026-04-23T11:08:03.318332"
+  },
+  "4240.SR": {
+    "Ticker": "4240.SR",
+    "Name": "AFG International Co.",
+    "MarketCap": 1822491264,
+    "PE": NaN,
+    "PB": -1.247545,
+    "DivYield": 0,
+    "ROE": 0,
+    "CurrentPrice": 15.88,
+    "LastUpdated": "2026-04-23T11:08:03.447898"
+  },
+  "4300.SR": {
+    "Ticker": "4300.SR",
+    "Name": "Dar Alarkan Real Estate Develop",
+    "MarketCap": 18748801024,
+    "PE": 16.533335,
+    "PB": 0.8434965,
+    "DivYield": 0,
+    "ROE": 5.2330000000000005,
+    "CurrentPrice": 17.36,
+    "LastUpdated": "2026-04-23T11:08:03.588464"
   }
 }

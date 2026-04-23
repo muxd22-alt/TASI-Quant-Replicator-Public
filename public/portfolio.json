@@ -1,0 +1,27 @@
+{
+  "balance": 10000.0,
+  "history": [],
+  "holdings": [
+    {
+      "Ticker": "2050.SR",
+      "Price": 26.6
+    },
+    {
+      "Ticker": "4190.SR",
+      "Price": 15.12
+    },
+    {
+      "Ticker": "1010.SR",
+      "Price": 21.52
+    },
+    {
+      "Ticker": "8010.SR",
+      "Price": 131.8
+    },
+    {
+      "Ticker": "4240.SR",
+      "Price": 15.88
+    }
+  ],
+  "last_rebalance_date": "2026-04-23"
+}

@@ -15,6 +15,11 @@ type QuantData = {
   updatedAt: string;
   top5: StockCandidate[];
   bottom5: StockCandidate[];
+  portfolio?: {
+    balance: number;
+    history: {date: string, balance: number}[];
+    last_rebalance_date: string;
+  }
 };
 
 export default function App() {
@@ -22,7 +27,7 @@ export default function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/data.json')
+    fetch('data.json')
       .then((res) => {
         if (!res.ok) throw new Error('Data not found');
         return res.json();
@@ -50,7 +55,7 @@ export default function App() {
       <div className="flex h-screen w-full flex-col items-center justify-center text-center">
         <ShieldAlert className="h-16 w-16 text-red-400 mb-4 opacity-80" />
         <h2 className="text-2xl font-bold">Model Data Unavailable</h2>
-        <p className="text-slate-400 mt-2">Could not fetch public/data.json - Run the model script first.</p>
+        <p className="text-slate-400 mt-2">Could not fetch data.json - Run the model script first.</p>
       </div>
     );
   }
@@ -65,6 +70,10 @@ export default function App() {
       timeZoneName: 'short'
     });
   };
+
+  const ptfBalance = data.portfolio?.balance ?? 10000;
+  const ptfReturn = ptfBalance - 10000;
+  const ptfReturnPercent = (ptfReturn / 10000) * 100;
 
   return (
     <div className="min-h-screen px-4 md:px-8 py-10 max-w-7xl mx-auto">
@@ -81,12 +90,32 @@ export default function App() {
           <div className="glass-panel px-4 py-3 mt-6 md:mt-0 flex items-center gap-3">
             <Clock className="w-5 h-5 text-emerald-400" />
             <div className="flex flex-col">
-              <span className="text-xs text-slate-400 uppercase tracking-wider font-semibold">Latest Run</span>
+              <span className="text-xs text-slate-400 uppercase tracking-wider font-semibold">Latest Run (Riyadh)</span>
               <span className="text-sm font-medium">{formatTime(data.updatedAt)}</span>
             </div>
           </div>
         </div>
       </header>
+      
+      <div className="glass-panel p-6 mb-12 flex flex-col md:flex-row items-center justify-between glow border-emerald-500/20 bg-emerald-500/5">
+        <div className="flex items-center gap-4 mb-4 md:mb-0">
+           <div className="h-12 w-12 rounded-full bg-emerald-500/20 flex items-center justify-center border border-emerald-500/40">
+              <TrendingUp className="w-6 h-6 text-emerald-400" />
+           </div>
+           <div>
+             <h2 className="text-sm text-slate-400 uppercase font-semibold tracking-wider">Model Portfolio (Started at 10,000 SAR)</h2>
+             <div className="text-3xl font-bold font-mono text-emerald-300">
+               {ptfBalance.toFixed(2)} SAR
+             </div>
+           </div>
+        </div>
+        <div className="text-right">
+           <div className={`text-xl font-bold ${ptfReturn >= 0 ? "text-emerald-400" : "text-red-400"}`}>
+              {ptfReturn >= 0 ? "+" : ""}{ptfReturn.toFixed(2)} ({ptfReturnPercent.toFixed(2)}%)
+           </div>
+           <div className="text-xs text-slate-500 uppercase mt-1">Total Return</div>
+        </div>
+      </div>
 
       <main className="space-y-10">
         {/* Top 5 SECTION */}
@@ -99,7 +128,7 @@ export default function App() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {data.top5.map((stock, i) => (
+            {data.top5?.map((stock, i) => (
               <motion.div
                 key={stock.Ticker}
                 initial={{ opacity: 0, y: 20 }}
@@ -151,7 +180,7 @@ export default function App() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {data.bottom5.map((stock, i) => (
+            {data.bottom5?.map((stock, i) => (
               <motion.div
                 key={stock.Ticker}
                 initial={{ opacity: 0, y: 20 }}

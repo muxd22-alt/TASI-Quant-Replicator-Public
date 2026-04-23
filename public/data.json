@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-23T10:46:50.709646Z",
+  "updatedAt": "2026-04-23T11:08:05.132472Z",
   "top5": [
     {
       "Ticker": "2050.SR",
@@ -10,12 +10,44 @@
       "DivYield": 628.0,
       "ROE": 15.755999000000001,
       "LastUpdated": "2026-04-23T10:46:50.503490",
-      "PE_Score": 0.8033515663492993,
-      "PB_Score": 0.6448601666857481,
-      "Div_Score": 1.4173203942290777,
-      "ROE_Score": 0.09907275056083714,
-      "Total_Score": 2.9646048778249625,
-      "Is_Top_Holding": false
+      "CurrentPrice": NaN,
+      "PE_Score": 0.48603458113233244,
+      "PB_Score": 0.34720170120671495,
+      "Div_Score": 1.474029820341244,
+      "ROE_Score": 0.012990168963246415,
+      "Total_Score": 2.3202562716435375
+    },
+    {
+      "Ticker": "4190.SR",
+      "Name": "Jarir Marketing Co.",
+      "MarketCap": 18144000000.0,
+      "PE": 17.37931,
+      "PB": 10.299727,
+      "DivYield": 676.0,
+      "ROE": 59.836,
+      "LastUpdated": "2026-04-23T11:08:03.142473",
+      "CurrentPrice": 15.12,
+      "PE_Score": 0.3880105440180548,
+      "PB_Score": -2.2832782373476124,
+      "Div_Score": 1.6539114255354297,
+      "ROE_Score": 2.3672518327841527,
+      "Total_Score": 2.125895564990025
+    },
+    {
+      "Ticker": "1010.SR",
+      "Name": "Riyad Bank",
+      "MarketCap": 85722120192.0,
+      "PE": 8.712551,
+      "PB": 1.3372273,
+      "DivYield": 379.0,
+      "ROE": 14.472,
+      "LastUpdated": "2026-04-23T11:08:03.078688",
+      "CurrentPrice": 21.52,
+      "PE_Score": 0.49031083324465297,
+      "PB_Score": 0.3771506661352759,
+      "Div_Score": 0.5408939933964056,
+      "ROE_Score": -0.05558672653374741,
+      "Total_Score": 1.3527687662425874
     },
     {
       "Ticker": "8010.SR",
@@ -26,78 +58,46 @@
       "DivYield": 115.99999999999999,
       "ROE": 22.431,
       "LastUpdated": "2026-04-23T10:46:50.460517",
-      "PE_Score": 0.46561263512882517,
-      "PB_Score": -0.533675738235749,
-      "Div_Score": -0.4565802948484893,
-      "ROE_Score": 0.7955564066209532,
-      "Total_Score": 0.27091300866554013,
-      "Is_Top_Holding": false
+      "CurrentPrice": NaN,
+      "PE_Score": 0.38100525223017867,
+      "PB_Score": -0.32043503977130544,
+      "Div_Score": -0.4447073017300702,
+      "ROE_Score": 0.36949422077273286,
+      "Total_Score": -0.014642868498464134
     },
     {
-      "Ticker": "8210.SR",
-      "Name": "Bupa Arabia for Cooperative Ins",
-      "MarketCap": 27599998976.0,
-      "PE": 25.449516,
-      "PB": 4.8183937,
-      "DivYield": 219.0,
-      "ROE": 20.0,
-      "LastUpdated": "2026-04-23T10:46:50.699129",
-      "PE_Score": 0.18181933326319175,
-      "PB_Score": -1.1263780425146077,
-      "Div_Score": -0.07960417966296304,
-      "ROE_Score": 0.5419007490589329,
-      "Total_Score": -0.4822621398554461,
-      "Is_Top_Holding": false
-    },
-    {
-      "Ticker": "8040.SR",
-      "Name": "Mutakamela Insurance Co.",
-      "MarketCap": 529447552.0,
-      "PE": 68.46154,
-      "PB": 0.7313666,
+      "Ticker": "4240.SR",
+      "Name": "AFG International Co.",
+      "MarketCap": 1822491264.0,
+      "PE": 17.67605,
+      "PB": -1.247545,
       "DivYield": 0.0,
-      "ROE": 1.039,
-      "LastUpdated": "2026-04-23T10:46:50.455774",
-      "PE_Score": -1.4507835347413156,
-      "PB_Score": 1.015193614064609,
-      "Div_Score": -0.8811359197176254,
-      "ROE_Score": -1.436529906240723,
-      "Total_Score": -2.7532557466350553,
-      "Is_Top_Holding": false
+      "ROE": 0.0,
+      "LastUpdated": "2026-04-23T11:08:03.447898",
+      "CurrentPrice": 15.88,
+      "PE_Score": 0.38450789812411673,
+      "PB_Score": 1.1444146177136443,
+      "Div_Score": -0.8794211809493523,
+      "ROE_Score": -0.8285194403695787,
+      "Total_Score": -0.17901810548116992
     }
   ],
   "bottom5": [
     {
-      "Ticker": "2050.SR",
-      "Name": "Savola Group",
-      "MarketCap": 7957412352.0,
-      "PE": 9.07483,
-      "PB": 1.4381199,
-      "DivYield": 628.0,
-      "ROE": 15.755999000000001,
-      "LastUpdated": "2026-04-23T10:46:50.503490",
-      "PE_Score": 0.8033515663492993,
-      "PB_Score": 0.6448601666857481,
-      "Div_Score": 1.4173203942290777,
-      "ROE_Score": 0.09907275056083714,
-      "Total_Score": 2.9646048778249625,
-      "Is_Top_Holding": false
-    },
-    {
-      "Ticker": "8010.SR",
-      "Name": "The Company for Cooperative Ins",
-      "MarketCap": 19788599296.0,
-      "PE": 17.97279,
-      "PB": 3.6872663,
-      "DivYield": 115.99999999999999,
-      "ROE": 22.431,
-      "LastUpdated": "2026-04-23T10:46:50.460517",
-      "PE_Score": 0.46561263512882517,
-      "PB_Score": -0.533675738235749,
-      "Div_Score": -0.4565802948484893,
-      "ROE_Score": 0.7955564066209532,
-      "Total_Score": 0.27091300866554013,
-      "Is_Top_Holding": false
+      "Ticker": "4240.SR",
+      "Name": "AFG International Co.",
+      "MarketCap": 1822491264.0,
+      "PE": 17.67605,
+      "PB": -1.247545,
+      "DivYield": 0.0,
+      "ROE": 0.0,
+      "LastUpdated": "2026-04-23T11:08:03.447898",
+      "CurrentPrice": 15.88,
+      "PE_Score": 0.38450789812411673,
+      "PB_Score": 1.1444146177136443,
+      "Div_Score": -0.8794211809493523,
+      "ROE_Score": -0.8285194403695787,
+      "Total_Score": -0.17901810548116992
     },
     {
       "Ticker": "8210.SR",
@@ -108,12 +108,28 @@
       "DivYield": 219.0,
       "ROE": 20.0,
       "LastUpdated": "2026-04-23T10:46:50.699129",
-      "PE_Score": 0.18181933326319175,
-      "PB_Score": -1.1263780425146077,
-      "Div_Score": -0.07960417966296304,
-      "ROE_Score": 0.5419007490589329,
-      "Total_Score": -0.4822621398554461,
-      "Is_Top_Holding": false
+      "CurrentPrice": NaN,
+      "PE_Score": 0.2927518195146703,
+      "PB_Score": -0.656198959348502,
+      "Div_Score": -0.05871135725088002,
+      "ROE_Score": 0.2396573338645718,
+      "Total_Score": -0.18250116322013996
+    },
+    {
+      "Ticker": "4300.SR",
+      "Name": "Dar Alarkan Real Estate Develop",
+      "MarketCap": 18748801024.0,
+      "PE": 16.533335,
+      "PB": 0.8434965,
+      "DivYield": 0.0,
+      "ROE": 5.2330000000000005,
+      "LastUpdated": "2026-04-23T11:08:03.588464",
+      "CurrentPrice": 17.36,
+      "PE_Score": 0.39799622461428125,
+      "PB_Score": 0.5237097439402915,
+      "Div_Score": -0.8794211809493523,
+      "ROE_Score": -0.5490309873912131,
+      "Total_Score": -0.5067461997859927
     },
     {
       "Ticker": "8040.SR",
@@ -124,12 +140,55 @@
       "DivYield": 0.0,
       "ROE": 1.039,
       "LastUpdated": "2026-04-23T10:46:50.455774",
-      "PE_Score": -1.4507835347413156,
-      "PB_Score": 1.015193614064609,
-      "Div_Score": -0.8811359197176254,
-      "ROE_Score": -1.436529906240723,
-      "Total_Score": -2.7532557466350553,
-      "Is_Top_Holding": false
+      "CurrentPrice": NaN,
+      "PE_Score": -0.21495152096374648,
+      "PB_Score": 0.5569943896183992,
+      "Div_Score": -0.8794211809493523,
+      "ROE_Score": -0.7730276569481146,
+      "Total_Score": -1.3104059692428143
+    },
+    {
+      "Ticker": "4180.SR",
+      "Name": "Fitaihi Holding Group",
+      "MarketCap": 745249984.0,
+      "PE": 271.0,
+      "PB": 1.5619596,
+      "DivYield": 94.0,
+      "ROE": 0.848,
+      "LastUpdated": "2026-04-23T11:08:03.318332",
+      "CurrentPrice": 2.71,
+      "PE_Score": -2.60566563191454,
+      "PB_Score": 0.31044111785309436,
+      "Div_Score": -0.5271530374440719,
+      "ROE_Score": -0.7832287451420507,
+      "Total_Score": -3.605606296647568
     }
-  ]
+  ],
+  "portfolio": {
+    "balance": 10000.0,
+    "history": [],
+    "holdings": [
+      {
+        "Ticker": "2050.SR",
+        "Price": 26.6
+      },
+      {
+        "Ticker": "4190.SR",
+        "Price": 15.12
+      },
+      {
+        "Ticker": "1010.SR",
+        "Price": 21.52
+      },
+      {
+        "Ticker": "8010.SR",
+        "Price": 131.8
+      },
+      {
+        "Ticker": "4240.SR",
+        "Price": 15.88
+      }
+    ],
+    "last_rebalance_date": "2026-04-23"
+  }
 }
