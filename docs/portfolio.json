@@ -1,0 +1,196 @@
+{
+  "cash": 1.3642420526593924e-12,
+  "positions": [
+    {
+      "ticker": "1020.SR",
+      "name": "Bank Aljazira",
+      "shares": 258.748,
+      "buy_price": 11.74,
+      "buy_date": "2026-04-26",
+      "weight_pct": 30.4
+    },
+    {
+      "ticker": "2222.SR",
+      "name": "Saudi Arabian Oil Co.",
+      "shares": 76.8617,
+      "buy_price": 27.1,
+      "buy_date": "2026-04-27",
+      "weight_pct": 29.9
+    },
+    {
+      "ticker": "3030.SR",
+      "name": "Saudi Cement Co.",
+      "shares": 53.9007,
+      "buy_price": 34.16,
+      "buy_date": "2026-04-27",
+      "weight_pct": 26.4
+    },
+    {
+      "ticker": "4321.SR",
+      "name": "Arabian Centres Co.",
+      "shares": 95.404,
+      "buy_price": 17.75,
+      "buy_date": "2026-04-27",
+      "weight_pct": 24.3
+    },
+    {
+      "ticker": "1050.SR",
+      "name": "Banque Saudi Fransi",
+      "shares": 67.2338,
+      "buy_price": 20.0,
+      "buy_date": "2026-04-27",
+      "weight_pct": 19.3
+    }
+  ],
+  "trades": [
+    {
+      "ticker": "3080.SR",
+      "name": "Eastern Province Cement Co.",
+      "side": "BUY",
+      "price": 22.84,
+      "shares": 146.8943,
+      "date": "2026-04-26",
+      "pnl": 0,
+      "weight_pct": 33.6
+    },
+    {
+      "ticker": "2060.SR",
+      "name": "National Industrialization Co.",
+      "side": "BUY",
+      "price": 9.92,
+      "shares": 208.6337,
+      "date": "2026-04-26",
+      "pnl": 0,
+      "weight_pct": 20.7
+    },
+    {
+      "ticker": "2081.SR",
+      "name": "Alkhorayef Water and Power Tech",
+      "side": "BUY",
+      "price": 126.1,
+      "shares": 12.1495,
+      "date": "2026-04-26",
+      "pnl": 0,
+      "weight_pct": 15.3
+    },
+    {
+      "ticker": "4110.SR",
+      "name": "Batic Investments and Logistics",
+      "side": "BUY",
+      "price": 2.25,
+      "shares": 2.4592,
+      "date": "2026-04-26",
+      "pnl": 0,
+      "weight_pct": 0.1
+    },
+    {
+      "ticker": "1020.SR",
+      "name": "Bank Aljazira",
+      "side": "BUY",
+      "price": 11.74,
+      "shares": 258.748,
+      "date": "2026-04-26",
+      "pnl": 0,
+      "weight_pct": 30.4
+    },
+    {
+      "ticker": "3080.SR",
+      "name": "Eastern Province Cement Co.",
+      "side": "SELL",
+      "price": 22.84,
+      "shares": 146.8943,
+      "date": "2026-04-27",
+      "pnl": 0.0,
+      "buy_price": 22.84,
+      "buy_date": "2026-04-26"
+    },
+    {
+      "ticker": "2060.SR",
+      "name": "National Industrialization Co.",
+      "side": "SELL",
+      "price": 9.92,
+      "shares": 208.6337,
+      "date": "2026-04-27",
+      "pnl": 0.0,
+      "buy_price": 9.92,
+      "buy_date": "2026-04-26"
+    },
+    {
+      "ticker": "2081.SR",
+      "name": "Alkhorayef Water and Power Tech",
+      "side": "SELL",
+      "price": 126.1,
+      "shares": 12.1495,
+      "date": "2026-04-27",
+      "pnl": 0.0,
+      "buy_price": 126.1,
+      "buy_date": "2026-04-26"
+    },
+    {
+      "ticker": "4110.SR",
+      "name": "Batic Investments and Logistics",
+      "side": "SELL",
+      "price": 2.25,
+      "shares": 2.4592,
+      "date": "2026-04-27",
+      "pnl": 0.0,
+      "buy_price": 2.25,
+      "buy_date": "2026-04-26"
+    },
+    {
+      "ticker": "2222.SR",
+      "name": "Saudi Arabian Oil Co.",
+      "side": "BUY",
+      "price": 27.1,
+      "shares": 76.8617,
+      "date": "2026-04-27",
+      "pnl": 0,
+      "weight_pct": 29.9
+    },
+    {
+      "ticker": "3030.SR",
+      "name": "Saudi Cement Co.",
+      "side": "BUY",
+      "price": 34.16,
+      "shares": 53.9007,
+      "date": "2026-04-27",
+      "pnl": 0,
+      "weight_pct": 26.4
+    },
+    {
+      "ticker": "4321.SR",
+      "name": "Arabian Centres Co.",
+      "side": "BUY",
+      "price": 17.75,
+      "shares": 95.404,
+      "date": "2026-04-27",
+      "pnl": 0,
+      "weight_pct": 24.3
+    },
+    {
+      "ticker": "1050.SR",
+      "name": "Banque Saudi Fransi",
+      "side": "BUY",
+      "price": 20.0,
+      "shares": 67.2338,
+      "date": "2026-04-27",
+      "pnl": 0,
+      "weight_pct": 19.3
+    }
+  ],
+  "equity_curve": [
+    {
+      "date": "2026-04-26",
+      "portfolio_value": 10000.0,
+      "cash": 0.0,
+      "invested": 10000.0
+    },
+    {
+      "date": "2026-04-27",
+      "portfolio_value": 10000.0,
+      "cash": 0.0,
+      "invested": 10000.0
+    }
+  ],
+  "last_update": "2026-04-27"
+}
