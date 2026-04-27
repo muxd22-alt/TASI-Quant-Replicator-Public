@@ -293,6 +293,7 @@ def main():
 
     for col in metrics_lower + metrics_higher:
         if col in df.columns:
+            df[col] = pd.to_numeric(df[col], errors='coerce')
             median = df[col].median() if not df[col].isna().all() else 0
             df[col] = df[col].fillna(median)
         else:
